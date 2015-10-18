@@ -19,8 +19,7 @@
 		"minification.propertyLiterals",
 		"runtime",
 		"spec.undefinedToVoid",
-		"validation.react",
-		"validation.undeclaredVariableCheck"
+		"validation.react"
 	],
 	"stage": 0
 }
