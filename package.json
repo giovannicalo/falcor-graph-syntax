@@ -15,7 +15,7 @@
 		"pegjs-loader": "^0.1.1",
 		"webpack": "^1.12.2"
 	},
-	"description": "",
+	"description": "Simplified GraphQL query syntax for Falcor.",
 	"devDependencies": {
 		"babel-eslint": "^4.1.3",
 		"chai": "^3.3.0",
@@ -23,7 +23,7 @@
 		"mocha": "^2.3.3"
 	},
 	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
-	"keywords": [],
+	"keywords": ["falcor", "graph", "graphql", "path", "syntax"],
 	"license": "MIT",
 	"main": "dist/index.js",
 	"name": "falcor-graph-syntax",
