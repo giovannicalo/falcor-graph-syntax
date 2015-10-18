@@ -23,13 +23,14 @@
 	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
 	"keywords": [],
 	"license": "MIT",
-	"main": "source/index.js",
+	"main": "dist/index.js",
 	"name": "falcor-graph-syntax",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/giovannicalo/falcor-graph-syntax.git"
 	},
 	"scripts": {
+		"install": "webpack",
 		"lint": "eslint .",
 		"start": "webpack"
 	},
