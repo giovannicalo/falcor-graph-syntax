@@ -1,5 +1,10 @@
 start =
-	item*
+	whitespace
+	items: item*
+	whitespace
+	{
+		return items;
+	}
 
 item "item" =
 	whitespace
