@@ -18,6 +18,7 @@ module.exports = {
 	},
 	output: {
 		filename: "index.js",
+		libraryTarget: "commonjs2",
 		path: "./dist",
 		target: "browser"
 	},
