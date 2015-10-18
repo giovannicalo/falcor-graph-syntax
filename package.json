@@ -1,0 +1,34 @@
+{
+	"author": {
+		"email": "giovanni.calo@live.it",
+		"name": "Giovanni Calò",
+		"url": "https://github.com/giovannicalo"
+	},
+	"bugs": {
+		"url": "https://github.com/giovannicalo/falcor-graph-syntax/issues"
+	},
+	"dependencies": {
+		"babel": "latest",
+		"babel-runtime": "latest"
+	},
+	"description": "",
+	"devDependencies": {
+		"babel-eslint": "latest",
+		"eslint": "latest"
+	},
+	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
+	"keywords": [],
+	"license": "MIT",
+	"main": "source/index.js",
+	"name": "falcor-graph-syntax",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/giovannicalo/falcor-graph-syntax.git"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"release": "webpack",
+		"start": "webpack-dev-server"
+	},
+	"version": "0.0.0"
+}
