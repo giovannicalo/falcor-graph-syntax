@@ -1,25 +1,25 @@
 var Path = require("path");
 
-var Webpack = require("webpack");
-
 module.exports = {
-	entry: [
-		"webpack-dev-server/client?http://localhost:8080",
-		"webpack/hot/only-dev-server",
-		"./source/index.js"
-	],
+	entry: ["./source/index.js"],
 	module: {
-		loaders: [{
-			exclude: /node_modules/,
-			loaders: ["react-hot", "babel?stage=0"],
-			test: /\.js$/
-		}]
+		loaders: [
+			{
+				exclude: /node_modules/,
+				loader: "babel",
+				test: /\.js$/
+			},
+			{
+				exclude: /node_modules/,
+				loader: "pegjs",
+				test: /\.peg$/
+			}
+		]
 	},
 	output: {
-		filename: "main.js",
-		path: "./www",
+		filename: "index.js",
+		path: "./dist",
 		target: "browser"
 	},
-	plugins: [new Webpack.HotModuleReplacementPlugin()],
 	resolve: { root: Path.join(__dirname, "node_modules") }
 };
