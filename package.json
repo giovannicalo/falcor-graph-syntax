@@ -18,7 +18,9 @@
 	"description": "",
 	"devDependencies": {
 		"babel-eslint": "^4.1.3",
-		"eslint": "^1.7.1"
+		"chai": "^3.3.0",
+		"eslint": "^1.7.1",
+		"mocha": "^2.3.3"
 	},
 	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
 	"keywords": [],
@@ -32,7 +34,8 @@
 	"scripts": {
 		"install": "webpack",
 		"lint": "eslint .",
-		"start": "webpack"
+		"start": "webpack",
+		"test": "webpack && mocha --compilers js:babel/register --recursive"
 	},
 	"version": "0.0.0"
 }
