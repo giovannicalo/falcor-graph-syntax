@@ -37,5 +37,5 @@
 		"start": "webpack",
 		"test": "webpack && mocha --compilers js:babel/register --recursive"
 	},
-	"version": "1.0.0"
+	"version": "1.0.1"
 }
