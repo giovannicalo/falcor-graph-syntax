@@ -1,4 +1,8 @@
-import Parser from "./grammar.peg";
+import Pegjs from "pegjs";
+
+import Grammar from "./grammar.js";
+
+const Parser = Pegjs.buildParser(Grammar);
 
 class Compiler {
 
