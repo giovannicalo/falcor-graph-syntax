@@ -1,4 +1,4 @@
-# Falcor Graph Syntax [![Build Status](https://travis-ci.org/giovannicalo/falcor-graph-syntax.svg?branch=master)](https://travis-ci.org/giovannicalo/falcor-graph-syntax)
+# Falcor Graph Syntax [![Build Status](https://travis-ci.org/giovannicalo/falcor-graph-syntax.svg?branch=master)](https://travis-ci.org/giovannicalo/falcor-graph-syntax) [![Coverage Status](https://coveralls.io/repos/giovannicalo/falcor-graph-syntax/badge.svg?branch=master&service=github)](https://coveralls.io/github/giovannicalo/falcor-graph-syntax?branch=master)
 
 Simplified [GraphQL](https://github.com/facebook/graphql) query syntax for [Falcor](https://github.com/Netflix/falcor).
 
