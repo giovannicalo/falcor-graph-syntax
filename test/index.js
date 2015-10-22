@@ -2,7 +2,7 @@
 
 import Chai from "chai";
 
-import FalcorGraphSyntax from "../dist";
+import FalcorGraphSyntax from "../source";
 
 const expect = Chai.expect;
 
