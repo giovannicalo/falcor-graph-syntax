@@ -8,8 +8,8 @@
 		"url": "https://github.com/giovannicalo/falcor-graph-syntax/issues"
 	},
 	"dependencies": {
-		"babel": "^5.8.23",
-		"babel-runtime": "^5.8.25",
+		"babel": "^5.8.29",
+		"babel-runtime": "^5.8.29",
 		"pegjs": "^0.9.0"
 	},
 	"description": "Simplified GraphQL query syntax for Falcor.",
