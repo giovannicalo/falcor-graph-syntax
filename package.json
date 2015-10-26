@@ -19,7 +19,9 @@
 		"coveralls": "^2.11.4",
 		"eslint": "^1.7.3",
 		"isparta": "^3.1.0",
-		"mocha": "^2.3.3"
+		"mocha": "^2.3.3",
+		"posix-cat": "^1.1.1",
+		"rimraf": "^2.4.3"
 	},
 	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
 	"keywords": ["falcor", "graph", "graphql", "path", "syntax"],
@@ -31,7 +33,7 @@
 		"url": "https://github.com/giovannicalo/falcor-graph-syntax.git"
 	},
 	"scripts": {
-		"coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel/register --recursive && cat coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js && rm -rf coverage",
+		"coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel/register --recursive && cat coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js && rimraf coverage",
 		"install": "babel source --out-dir dist",
 		"lint": "eslint .",
 		"test": "mocha --compilers js:babel/register --recursive"
