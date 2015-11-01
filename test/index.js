@@ -20,7 +20,7 @@ describe("Falcor", () => {
 			expect(FalcorGraphSyntax("foo(id: 1)")).to.deep.equal([["foo", 1]]);
 		});
 		it("should convert a root element with an index and properties", () => {
-			expect(FalcorGraphSyntax("foo(id: 1) { foo, bar }")).to.deep.equal([["foo", 1, ["foo", "bar"]]]);
+			expect(FalcorGraphSyntax("foo(id: 1) { bar, foo }")).to.deep.equal([["foo", 1, ["bar", "foo"]]]);
 		});
 		it("should convert several root elements with indices, properties, filters and children", () => {
 			expect(FalcorGraphSyntax(`
@@ -29,15 +29,21 @@ describe("Falcor", () => {
 					bar(index: 0) { foo }
 				},
 				bar(index: 0) {
-					foo(from: 0, to: 9) { foo, bar },
+					foo(from: 0, to: 9) { bar, foo },
 					bar(length: 10)
 				}
 			`)).to.deep.equal([
-				["foo", 1, "foo", ["foo", "bar"]],
+				["foo", 1, "foo", ["bar", "foo"]],
 				["foo", 1, "bar", 0, "foo"],
-				["bar", 0, "foo", { from: 0, to: 9 }, ["foo", "bar"]],
+				["bar", 0, "foo", { from: 0, to: 9 }, ["bar", "foo"]],
 				["bar", 0, "bar", { length: 10 }]
 			]);
+		});
+		it("should convert duplicate root elements and properties, extending them and never repeating them", () => {
+			expect(FalcorGraphSyntax(`
+				foo(id: 1) { foo { bar, foo } },
+				foo(id: 1) { foo { foo } }
+			`)).to.deep.equal([["foo", 1, "foo", ["bar", "foo"]]]);
 		});
 	});
 });

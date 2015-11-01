@@ -33,7 +33,10 @@ const merge = (paths) => {
 			}
 		});
 		if (index >= 0) {
-			merged[index][merged[index].length - 1].push(atom);
+			const target = merged[index][merged[index].length - 1];
+			if (!~target.indexOf(atom)) {
+				target.push(atom);
+			}
 		} else {
 			path.push([atom]);
 			merged.push(path);
@@ -42,6 +45,8 @@ const merge = (paths) => {
 	merged.forEach((path) => {
 		if (path[path.length - 1].length === 1) {
 			path[path.length - 1] = path[path.length - 1][0];
+		} else {
+			path[path.length - 1] = path[path.length - 1].sort();
 		}
 	});
 	return merged;
