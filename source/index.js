@@ -6,13 +6,13 @@ const Parser = Pegjs.buildParser(Grammar);
 
 const flatten = (path) => {
 	let flattened = [];
-	for (const element of path) {
+	(path || []).forEach((element) => {
 		if (Array.isArray(element)) {
 			flattened = flattened.concat(flatten(element));
 		} else {
 			flattened.push(element);
 		}
-	}
+	});
 	return flattened;
 };
 
@@ -24,33 +24,32 @@ const flattenAll = (paths) => {
 
 const merge = (paths) => {
 	const merged = [];
-	for (const path of paths) {
+	(paths || []).forEach((path) => {
 		const atom = path.pop();
 		let index = -1;
-		for (const checkPath in merged) {
-			if (JSON.stringify(path) === JSON.stringify(merged[checkPath].slice(0, -1))) {
-				index = checkPath;
-				break;
+		merged.forEach((value, key) => {
+			if (JSON.stringify(path) === JSON.stringify(merged[key].slice(0, -1))) {
+				index = key;
 			}
-		}
+		});
 		if (index >= 0) {
 			merged[index][merged[index].length - 1].push(atom);
 		} else {
 			path.push([atom]);
 			merged.push(path);
 		}
-	}
-	for (const path of merged) {
+	});
+	merged.forEach((path) => {
 		if (path[path.length - 1].length === 1) {
 			path[path.length - 1] = path[path.length - 1][0];
 		}
-	}
+	});
 	return merged;
 };
 
 const traverse = (items) => {
 	const paths = [];
-	for (const item of items) {
+	(items || []).forEach((item) => {
 		const path = [];
 		path.push(item.identifier);
 		if (item.filters) {
@@ -64,16 +63,15 @@ const traverse = (items) => {
 			}
 		}
 		if (item.children) {
-			const childrenPaths = traverse(item.children);
-			for (const childPath of childrenPaths) {
-				const fullPath = [].concat(path);
+			traverse(item.children).forEach((childPath) => {
+				const fullPath = path.slice();
 				fullPath.push(childPath);
 				paths.push(fullPath);
-			}
+			});
 		} else {
 			paths.push(path);
 		}
-	}
+	});
 	return paths;
 };
 
