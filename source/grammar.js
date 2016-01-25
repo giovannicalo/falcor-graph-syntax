@@ -60,11 +60,25 @@ export default `
 		whitespace
 		[:]
 		whitespace
-		value: identifier
+		value: (
+			identifier / (
+				[\\[]
+				(
+					identifier
+					[,]?
+				)+
+				[\\]]
+			)
+		)
 		whitespace
 		[,]?
 		whitespace
 		{
+			if (Array.isArray(value)) {
+				value = value[1].map((value) => {
+					return value[0];
+				});
+			}
 			return {
 				key: key,
 				value: value

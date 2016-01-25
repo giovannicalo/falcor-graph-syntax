@@ -7,7 +7,9 @@ const Parser = Pegjs.buildParser(Grammar);
 const flatten = (path) => {
 	let flattened = [];
 	(path || []).forEach((element) => {
-		if (Array.isArray(element)) {
+		if (element && element.id) {
+			flattened.push(element.id);
+		} else if (Array.isArray(element)) {
 			flattened = flattened.concat(flatten(element));
 		} else {
 			flattened.push(element);
@@ -59,7 +61,15 @@ const traverse = (items) => {
 		path.push(item.identifier);
 		if (item.filters) {
 			if (item.filters[0].key === "id" || item.filters[0].key === "index") {
-				path.push(item.filters[0].value | 0);
+				if (Array.isArray(item.filters[0].value)) {
+					path.push({
+						id: item.filters[0].value.map((value) => {
+							return value | 0;
+						})
+					});
+				} else {
+					path.push(item.filters[0].value | 0);
+				}
 			} else {
 				path.push(item.filters.reduce((filters, filter) => {
 					filters[filter.key] = filter.value | 0;

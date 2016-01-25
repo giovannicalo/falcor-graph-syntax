@@ -24,7 +24,7 @@ describe("Falcor", () => {
 		});
 		it("should convert several root elements with indices, properties, filters and children", () => {
 			expect(FalcorGraphSyntax(`
-				foo(id: 1) {
+				foo(id: [1, 2, 3]) {
 					foo { foo, bar },
 					bar(index: 0) { foo }
 				},
@@ -33,8 +33,8 @@ describe("Falcor", () => {
 					bar(length: 10)
 				}
 			`)).to.deep.equal([
-				["foo", 1, "foo", ["bar", "foo"]],
-				["foo", 1, "bar", 0, "foo"],
+				["foo", [1, 2, 3], "foo", ["bar", "foo"]],
+				["foo", [1, 2, 3], "bar", 0, "foo"],
 				["bar", 0, "foo", { from: 0, to: 9 }, ["bar", "foo"]],
 				["bar", 0, "bar", { length: 10 }]
 			]);
