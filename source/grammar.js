@@ -75,7 +75,7 @@ export default `
 		whitespace
 		{
 			if (Array.isArray(value)) {
-				value = value[1].map((value) => {
+				value = value[1].map(function(value) {
 					return value[0];
 				});
 			}
