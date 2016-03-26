@@ -8,20 +8,23 @@
 		"url": "https://github.com/giovannicalo/falcor-graph-syntax/issues"
 	},
 	"dependencies": {
-		"babel": "^5.8.35",
-		"babel-runtime": "^5.8.35",
+		"babel-cli": "^6.6.5",
+		"babel-core": "^6.7.4",
+		"babel-preset-node-giovanni": "^1.1.0",
+		"babel-runtime": "^6.6.1",
 		"pegjs": "^0.9.0"
 	},
 	"description": "Simplified GraphQL query syntax for Falcor.",
 	"devDependencies": {
-		"babel-eslint": "^5.0.0-beta6",
-		"chai": "^3.4.1",
-		"coveralls": "^2.11.6",
-		"eslint": "^1.10.3",
+		"babel-eslint": "^6.0.0-beta.6",
+		"chai": "^3.5.0",
+		"coveralls": "^2.11.9",
+		"eslint": "^2.5.1",
+		"eslint-config-giovanni": "^1.1.1",
 		"isparta": "^4.0.0",
-		"mocha": "^2.3.4",
+		"mocha": "^2.4.5",
 		"posix-cat": "^1.1.1",
-		"rimraf": "^2.5.1"
+		"rimraf": "^2.5.2"
 	},
 	"homepage": "https://github.com/giovannicalo/falcor-graph-syntax",
 	"keywords": ["falcor", "graph", "graphql", "path", "syntax"],
@@ -33,10 +36,10 @@
 		"url": "https://github.com/giovannicalo/falcor-graph-syntax.git"
 	},
 	"scripts": {
-		"coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel/register --recursive && cat coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js && rimraf coverage",
+		"coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel-register --recursive && cat coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js && rimraf coverage",
 		"install": "babel source --out-dir dist",
 		"lint": "eslint .",
-		"test": "mocha --compilers js:babel/register --recursive"
+		"test": "mocha --compilers js:babel-register --recursive"
 	},
 	"version": "1.1.1"
 }
