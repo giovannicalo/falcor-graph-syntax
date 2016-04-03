@@ -27,10 +27,11 @@ const flattenAll = (paths) => {
 const merge = (paths) => {
 	const merged = [];
 	(paths || []).forEach((path) => {
-		const atom = path.pop();
+		const atom = path.slice(-1)[0];
+		const chain = path.slice(0, -1);
 		let index = -1;
 		merged.forEach((value, key) => {
-			if (JSON.stringify(path) === JSON.stringify(merged[key].slice(0, -1))) {
+			if (JSON.stringify(chain) === JSON.stringify(merged[key].slice(0, -1))) {
 				index = key;
 			}
 		});
@@ -40,18 +41,21 @@ const merge = (paths) => {
 				target.push(atom);
 			}
 		} else {
-			path.push([atom]);
-			merged.push(path);
+			chain.push([atom]);
+			merged.push(chain);
 		}
 	});
-	merged.forEach((path) => {
-		if (path[path.length - 1].length === 1) {
-			path[path.length - 1] = path[path.length - 1][0];
+	return merged.map((path) => {
+		const merged = path.slice();
+		const lastKey = path.length - 1;
+		const lastValue = path[lastKey];
+		if (lastValue.length === 1) {
+			merged[lastKey] = lastValue[0];
 		} else {
-			path[path.length - 1] = path[path.length - 1].sort();
+			merged[lastKey] = lastValue.sort();
 		}
+		return merged;
 	});
-	return merged;
 };
 
 const traverse = (items) => {
@@ -72,8 +76,10 @@ const traverse = (items) => {
 				}
 			} else {
 				path.push(item.filters.reduce((filters, filter) => {
-					filters[filter.key] = filter.value | 0;
-					return filters;
+					return {
+						...filters,
+						[filter.key]: filter.value | 0
+					};
 				}, {}));
 			}
 		}
