@@ -34,8 +34,8 @@
 	"scripts": {
 		"coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel-register --recursive && cat coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js && rimraf coverage",
 		"lint": "eslint .",
-		"prepublish": "babel source --out-dir dist",
+		"prepublish": "npm run lint && npm test && babel source --out-dir dist",
 		"test": "mocha --compilers js:babel-register --recursive"
 	},
-	"version": "1.1.2"
+	"version": "1.1.3"
 }
