@@ -10,7 +10,7 @@
 	"dependencies": {
 		"pegjs": "^0.9.0"
 	},
-	"description": "Simplified GraphQL query syntax for Falcor.",
+	"description": "Simplified GraphQL query syntax for Falcor",
 	"devDependencies": {
 		"babel-cli": "^6.6.5",
 		"babel-preset-node-giovanni": "^1.1.1",
