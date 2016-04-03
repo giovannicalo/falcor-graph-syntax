@@ -1,5 +1,3 @@
-/* global describe, it */
-
 import Chai from "chai";
 
 import FalcorGraphSyntax from "../source";
