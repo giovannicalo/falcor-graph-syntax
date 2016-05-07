@@ -1,6 +1,3 @@
 module.exports = {
-	extends: [
-		"giovanni/client",
-		"giovanni/library"
-	]
+	extends: "giovanni/library"
 };
