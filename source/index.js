@@ -1,6 +1,6 @@
 import Pegjs from "pegjs";
 
-import Grammar from "./grammar.js";
+import Grammar from "./grammar";
 
 const Parser = Pegjs.buildParser(Grammar);
 
