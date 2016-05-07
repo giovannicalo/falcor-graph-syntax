@@ -4,7 +4,7 @@ Simplified [GraphQL](https://github.com/facebook/graphql) query syntax for [Falc
 
 Falcor path syntax can get very long and redundant:
 
-```
+```javascript
 [
 	["foo", 1, "foo", ["foo", "bar"]],
 	["foo", 1, "bar", 0, "foo"],
@@ -17,7 +17,7 @@ The deeper you go in the model, the worse it gets.
 
 This library lets you use an alternative syntax, similar to that of GraphQL:
 
-```
+```javascript
 `
 	foo(id: 1) {
 		foo { foo, bar },
@@ -32,7 +32,7 @@ This library lets you use an alternative syntax, similar to that of GraphQL:
 
 ## Installation
 
-```
+```bash
 npm install falcor-graph-syntax
 ```
 
@@ -40,18 +40,18 @@ npm install falcor-graph-syntax
 
 Import the library.
 
-```
+```javascript
 import FalcorGraphSyntax from "falcor-graph-syntax";
 ```
 
 Then replace your `paths` (strings or arrays)...
 
-```
+```javascript
 model.get(paths).subscribe(...);
 ```
 
 ... with your `query` (string), wrapped in the `FalcorQuerySyntax()` function.
 
-```
+```javascript
 model.get(FalcorQuerySyntax(query)).subscribe(...);
 ```
