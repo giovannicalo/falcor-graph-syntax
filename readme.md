@@ -50,8 +50,8 @@ Then replace your `paths` (strings or arrays)...
 model.get(paths).subscribe(...);
 ```
 
-... with your `query` (string), wrapped in the `FalcorQuerySyntax()` function.
+... with your `query` (string), wrapped in the `FalcorGraphSyntax()` function.
 
 ```javascript
-model.get(FalcorQuerySyntax(query)).subscribe(...);
+model.get(...FalcorGraphSyntax(query)).subscribe(...);
 ```
